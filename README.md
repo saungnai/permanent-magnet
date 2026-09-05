@@ -1,2 +1,2 @@
-# permanent-magnet
-Monte Carlo simulations of Heisenberg spin models for studying magnetic hysteresis, coercivity, and heterogeneous anisotropy in permanent magnets.
+# Permanent Magnet Simulation
+Monte Carlo simulations of different spin models for studying magnetic hysteresis, coercivity, anisotropy and other properties of permanent magnets.

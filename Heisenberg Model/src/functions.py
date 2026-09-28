@@ -40,6 +40,22 @@ def DmapCheckerboard(theta,Dmax,Dmin):
                  Dmap[i, j] = Dmax
     return Dmap
 
+def DmapGrainShell(theta, Dmax, Dmin, grainSize, shellWidth):
+    Dmap = np.zeros_like(theta)
+    Dmap += Dmin
+    L = theta.shape[0]
+    for i in range(L):
+        for j in range(L):
+
+            gi = i % grainSize
+            gj = j % grainSize
+            if (gi < shellWidth
+                or gi >= grainSize - shellWidth
+                or gj < shellWidth
+                or gj >= grainSize - shellWidth):
+                Dmap[i, j] = Dmax
+    return Dmap
+
 def magnetization(theta):
     return np.mean(np.cos(theta))
     
@@ -127,10 +143,13 @@ def Hysteresis(J,D,T,Hmax,dH,amt,plot,theta,phi,L,rng):
     MUPValues = []
     HUPValues = []
     H = Hmax
+    MrValues = []
     while H>=-Hmax:
         for x in range(0,amt):
             sweep(J,D,H,T,theta,phi,L)
         MDownValues.append(magnetization(theta))
+        if np.isclose(H,0.0):
+            MrValues.append(np.abs(magnetization(theta)))
         HDownValues.append(H)
         H -= dH
 
@@ -139,12 +158,15 @@ def Hysteresis(J,D,T,Hmax,dH,amt,plot,theta,phi,L,rng):
         for x in range(0,amt):
             sweep(J,D,H,T,theta,phi,L)
         MUPValues.append(magnetization(theta))
+        if np.isclose(H,0.0):
+            MrValues.append(np.abs(magnetization(theta)))
         HUPValues.append(H)
         H += dH
 
     HcDown = findCoerciveField(HDownValues, MDownValues)
     HcUp = findCoerciveField(HUPValues, MUPValues)
-
+    Mr = np.mean(MrValues)
+    
     if HcDown is None or HcUp is None:
         print("No complete magnetization reversal within ±",Hmax)
         Hc = None
@@ -160,5 +182,6 @@ def Hysteresis(J,D,T,Hmax,dH,amt,plot,theta,phi,L,rng):
         plt.grid()
         plt.show()
 
-    return Hc
+    return Hc, Mr
+
 

@@ -5,7 +5,7 @@ H = 10000
 
 #Hysteresis 
 Hmax = 4
-dH = 0.2
+dH = 0.1
 sweep_per_H = 100
 
 
@@ -13,8 +13,12 @@ sweep_per_H = 100
 Dmax = 10.0
 Dmin = 0.1
 
-#Trials Per p value 
-p_trials = 20 
+#Trials per value 
+p_trials = 15 
 
 #Parallelization
-worker = 10 #Number of threads
+worker = 15 #Number of threads
+
+#Grain Parameters
+grainSize = 20
+shellWidth = 1

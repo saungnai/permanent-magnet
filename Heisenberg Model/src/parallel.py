@@ -9,8 +9,8 @@ def run_trial(seed,J,T,H,dH,sweep_per_H,showPlot,func,*args):
     seed_numba(seed)
     theta,phi,L = loadData()
     D = func(theta,*args)
-    Hc = Hysteresis(J,D,T,H,dH,sweep_per_H,showPlot,theta,phi,L,rng)
-    return Hc
+    Hc, Mr = Hysteresis(J,D,T,H,dH,sweep_per_H,showPlot,theta,phi,L,rng)
+    return Hc, Mr
 
 def run_parallel(func, repeats, workers, *args):
     seeds = np.random.SeedSequence().generate_state(int(repeats))

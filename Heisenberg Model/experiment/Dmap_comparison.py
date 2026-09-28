@@ -6,7 +6,7 @@ from src.parallel import *
 
 if __name__ == "__main__":
     ## p=0.5 Checkerboard pattern
-    HcValues1 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapCheckerboard,Dmax,Dmin)
+    HcValues1,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapCheckerboard,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues1))
     print("Std Hc =", np.std(HcValues1))
     print()
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     
     ## p=0.5 Random pattern
     p = 0.5
-    HcValues2 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
+    HcValues2,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues2))
     print("Std Hc =", np.std(HcValues2))
     print()
@@ -22,28 +22,28 @@ if __name__ == "__main__":
     ## p=0.25 periodic pattern
     colspacing = 1
     rowspacing = 1
-    HcValues3 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapPeriodic,colspacing,rowspacing,Dmax,Dmin)
+    HcValues3,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapPeriodic,colspacing,rowspacing,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues3))
     print("Std Hc =", np.std(HcValues3))
     print()
     
     ## p=0.25 random pattern
     p = 0.25
-    HcValues4 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
+    HcValues4,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues4))
     print("Std Hc =", np.std(HcValues4))
     print()
     
     ## p=1 full anisotropy
     p = 1
-    HcValues5 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
+    HcValues5,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues5))
     print("Std Hc =", np.std(HcValues5))
     print()
     
     ## p=0.1 random pattern
     p = 0.1
-    HcValues6 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
+    HcValues6,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapRandom,p,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues6))
     print("Std Hc =", np.std(HcValues6))
     print()
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     ## p=0.1 periodic pattern
     colspacing = 4
     rowspacing = 1
-    HcValues7 = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapPeriodic,colspacing,rowspacing,Dmax,Dmin)
+    HcValues7,Mr = run_parallel(run_trial,p_trials,worker,J,T,Hmax,dH,sweep_per_H,False,DmapPeriodic,colspacing,rowspacing,Dmax,Dmin)
     print("Mean Hc =", np.mean(HcValues7))
     print("Std Hc =", np.std(HcValues7))
     print()
